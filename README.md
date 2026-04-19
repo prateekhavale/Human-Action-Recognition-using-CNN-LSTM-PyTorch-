@@ -1,17 +1,17 @@
-# 🎬 Human Action Recognition using CNN + LSTM (PyTorch)
+# Human Action Recognition using CNN + LSTM (PyTorch)
 
-## 📌 Overview
+## Overview
 
 This project implements a **Human Action Recognition (HAR)** system using a hybrid deep learning model:
 
-* 🧠 CNN (ResNet18) → Extract spatial features from frames
-* 🔁 LSTM → Learn temporal patterns across frames
+*  CNN (ResNet18) → Extract spatial features from frames
+*  LSTM → Learn temporal patterns across frames
 
 The system takes a video as input and predicts the human action being performed.
 
 ---
 
-## 🚀 Features
+##  Features
 
 * End-to-end video classification pipeline
 * Frame extraction using OpenCV
@@ -23,7 +23,7 @@ The system takes a video as input and predicts the human action being performed.
 
 ---
 
-## 🧱 Project Structure
+##  Project Structure
 
 ```
 human-action-recognition/
@@ -39,7 +39,7 @@ human-action-recognition/
 
 ---
 
-## 📊 Dataset
+## Dataset
 
 Dataset used: **UCF101**
 
@@ -49,50 +49,38 @@ Dataset used: **UCF101**
 Download:
 https://www.crcv.ucf.edu/data/UCF101.php
 
-### Expected Folder Structure:
-
-```
-data/
-├── ApplyEyeMakeup/
-│   ├── video1.avi
-│   ├── video2.avi
-├── Archery/
-│   ├── video1.avi
-```
 
 ---
 
-## ⚙️ Installation
+## Installation
 
 ```
-git clone https://github.com/your-username/human-action-recognition.git
-cd human-action-recognition
 
 pip install torch torchvision numpy opencv-python matplotlib seaborn scikit-learn
 ```
 
 ---
 
-## 🧠 Model Architecture
+## Model Architecture
 
-### 🔹 CNN (Feature Extraction)
+### 1 CNN (Feature Extraction)
 
 * Model: ResNet18 (pretrained)
 * Output: 512-dimensional feature vector per frame
 
-### 🔹 LSTM (Temporal Learning)
+### 2 LSTM (Temporal Learning)
 
 * Input size: 512
 * Hidden size: 256
 * Sequence length: 16 frames
 
-### 🔹 Classifier
+### 3 Classifier
 
 * Fully connected layer → action class prediction
 
 ---
 
-## 🔄 Pipeline Flow
+##  Pipeline Flow
 
 ```
 Video
@@ -112,7 +100,7 @@ Prediction
 
 ---
 
-## 🏗️ Training
+## Training
 
 Hyperparameters:
 
@@ -130,7 +118,7 @@ python main.py
 
 ---
 
-## 📈 Evaluation
+## Evaluation
 
 * Accuracy calculation
 * Confusion Matrix (Seaborn heatmap)
@@ -145,27 +133,27 @@ Accuracy: 78.45%
 
 ---
 
-## 📊 Confusion Matrix
+## Confusion Matrix
 
 * Visualizes model predictions vs actual labels
 * Helps identify misclassified actions
 
 ---
 
-## 🧪 Core Components
+## Core Components
 
-### 🎞️ Video Processing
+### Video Processing
 
 * `extract_frames()` → Extract frames from video
 * `sample_frames()` → Uniform frame selection
 * `process_video()` → Full preprocessing pipeline
 
-### 📦 Dataset Class
+### Dataset Class
 
 * Custom PyTorch Dataset
 * Dynamically loads videos and labels
 
-### 📥 DataLoader
+### DataLoader
 
 ```
 create_dataloader(data_dir, batch_size)
@@ -173,7 +161,7 @@ create_dataloader(data_dir, batch_size)
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 * Python
 * PyTorch
@@ -184,7 +172,7 @@ create_dataloader(data_dir, batch_size)
 
 ---
 
-## ⚠️ Limitations
+## Limitations
 
 * Uses limited classes (currently set to 10)
 * No data augmentation
@@ -193,18 +181,17 @@ create_dataloader(data_dir, batch_size)
 
 ---
 
-## 🔮 Future Improvements
+## Future Improvements
 
 * Train on full UCF101 dataset
 * Add data augmentation
 * Use 3D CNNs (C3D / I3D)
 * Add attention mechanism
 * Real-time inference (webcam)
-* Deploy with Streamlit / FastAPI
 
 ---
 
-## 📌 Notes
+## Notes
 
 * Ensure videos are readable (not corrupted)
 * Empty videos return `None`
@@ -212,7 +199,7 @@ create_dataloader(data_dir, batch_size)
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Feel free to fork and improve:
 
@@ -222,14 +209,13 @@ Feel free to fork and improve:
 
 ---
 
-## 📜 License
 
-MIT License
-
----
-
-## ⭐ Acknowledgements
+## Acknowledgements
 
 * UCF101 Dataset
 * PyTorch
 * OpenCV
+
+## Support
+
+If you found this project useful, consider giving it a ⭐ on GitHub!
