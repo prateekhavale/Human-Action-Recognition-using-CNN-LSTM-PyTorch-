@@ -10,6 +10,7 @@ import torch.optim as optim
 
 video_path = "data"
 
+# EXTRACT FRAMES
 def extract_frames(video_path, size=(224,224)):
     cap = cv2.VideoCapture(video_path)
     frames = []
@@ -25,7 +26,7 @@ def extract_frames(video_path, size=(224,224)):
     cap.release()
     return frames
 
-# 
+# SAMPLE FRAMES
 def sample_frames(frames, num_frames=16):
     total = len(frames)
 
@@ -37,7 +38,7 @@ def sample_frames(frames, num_frames=16):
 
     return sample_frames
 
-
+# VIDEO PROCESS
 def process_video(video_path):
     frames = extract_frames(video_path)
 
@@ -48,7 +49,7 @@ def process_video(video_path):
 
     return frames
 
-
+# CREATE DATASET
 class videoDataset(Dataset):
     def __init__(self, data_dir, num_frames=16):
         self.data_dir = data_dir
@@ -104,7 +105,7 @@ class videoDataset(Dataset):
 
         return frames
 
-
+# CREATE DATALOADER
 def create_dataloader(data_dir, batch_size=4):
 
     dataset = videoDataset(data_dir)
@@ -119,6 +120,7 @@ def create_dataloader(data_dir, batch_size=4):
 
     return dataloader
 
+# CNN, LSTM MODEL TRAINING
 class CNN_LSTM_Model(nn.Module):
     def __init__(self, num_classes):
         super(CNN_LSTM_Model, self).__init__()
@@ -154,7 +156,7 @@ class CNN_LSTM_Model(nn.Module):
 
         return out
 
-
+# LOSS CALCULATION AND OPTIMIZATION
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 num_classes = 10
@@ -166,7 +168,7 @@ criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 
 
-
+# EPOCH OPERATION
 num_epochs = 2
 dataloader = create_dataloader("data")
 
@@ -194,7 +196,7 @@ for epoch in range(num_epochs):
 
     print(f"Epoch [{epoch+1}/{num_epochs}], Loss: {avg_loss:.4f}")
 
-
+# MODEL EVALUTION
 correct = 0
 total = 0
 
@@ -222,7 +224,7 @@ with torch.no_grad():
 accuracy = 100 * correct / total
 print(f"Accuracy: {accuracy:.2f}%")
 
-
+# CONFUSSION MATRIX
 from sklearn.metrics import confusion_matrix
 import seaborn as sns
 import matplotlib.pyplot as plt
