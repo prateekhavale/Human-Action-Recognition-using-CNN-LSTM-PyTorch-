@@ -181,16 +181,6 @@ create_dataloader(data_dir, batch_size)
 
 ---
 
-## Future Improvements
-
-* Train on full UCF101 dataset
-* Add data augmentation
-* Use 3D CNNs (C3D / I3D)
-* Add attention mechanism
-* Real-time inference (webcam)
-
----
-
 ## Notes
 
 * Ensure videos are readable (not corrupted)
